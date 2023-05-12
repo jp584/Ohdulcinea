@@ -23,7 +23,7 @@ class _WhackAMoleGameState extends State<WhackAMoleGame> {
   @override
   void dispose() {
     super.dispose();
-    _timer?.cancel();
+    _timer.cancel();
   }
 
   void _startGame() {
