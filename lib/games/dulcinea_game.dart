@@ -18,10 +18,10 @@ class  DulcineaGame extends StatefulWidget {
 class _DulcineaGameState extends State<DulcineaGame> {
   @override
   Widget build(BuildContext context) {
-
     return BonfireWidget(
-        player:DonQuijotePlayer(position: Vector2(800,800),
+        player:DonQuijotePlayer(position: Vector2(1900,1550),
             spriteSheet: DonQuijoteSpriteSheet.spriteSheet),
+        // showCollisionArea: true,
         joystick: Joystick(
           directional: JoystickDirectional(),
         ),
