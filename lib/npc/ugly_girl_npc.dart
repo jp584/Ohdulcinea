@@ -7,6 +7,7 @@ import 'package:ohdulcinea/sprite_sheets/sprite_sheets.dart';
 
 import '../constants/animation_configs.dart';
 import '../constants/globals.dart';
+import '../decorations/puzzleUno.dart';
                           // NPC          TAP INTERACTION
 class UglyGirlNpc extends SimpleNpc with TapGesture {
 
@@ -40,6 +41,7 @@ class UglyGirlNpc extends SimpleNpc with TapGesture {
           LogicalKeyboardKey.enter
         ],
         onClose: () {
+          gameRef.add(PuzzleUno( position: Vector2(1900,1450)));
           gameRef.camera.moveToPlayerAnimated(zoom:1);
         }
       );

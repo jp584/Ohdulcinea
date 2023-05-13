@@ -3,6 +3,8 @@ import 'package:bonfire/bonfire.dart';
 import 'package:ohdulcinea/constants/animation_configs.dart';
 import 'package:ohdulcinea/constants/globals.dart';
 
+import '../decorations/puzzleUno.dart';
+
 class DonQuijotePlayer extends SimplePlayer with ObjectCollision {
 
   DonQuijotePlayer({required Vector2 position, required SpriteSheet spriteSheet })
@@ -22,5 +24,6 @@ class DonQuijotePlayer extends SimplePlayer with ObjectCollision {
           ),
         ],
     ));
+  
   }
 }

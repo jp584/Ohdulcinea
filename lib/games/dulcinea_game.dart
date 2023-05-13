@@ -4,36 +4,82 @@ import 'package:flutter/material.dart';
 import 'package:ohdulcinea/npc/ugly_girl_npc.dart';
 
 import '../constants/globals.dart';
+import '../enums/map_id.dart';
+import '../miniGames/puzzle_easy.dart';
 import '../players/don_quijote.dart';
 import 'package:ohdulcinea/sprite_sheets/sprite_sheets.dart';
 
+MapId currentMapId = MapId.one; // ENUMS TO IDENTIFY MAPS BY ID
+late Function(MapId) selectMap; // LATE FUNCTION TO SELECT A MAP
 
 class  DulcineaGame extends StatefulWidget {
   const DulcineaGame ({Key? key}) : super(key: key);
-
   @override
   State<DulcineaGame> createState() => _DulcineaGameState();
 }
 
+
 class _DulcineaGameState extends State<DulcineaGame> {
+
+  // OVERRIDE DISPOSE METHOD FOR MAP ROUTING
+  @override
+  void dispose(){
+    currentMapId = MapId.one;
+    super.dispose();
+  }
+
+
+  @override
+  void initState(){
+    selectMap = (MapId id){ // LATE SELECT FUNCTION THAT WILL TAKE A MAP ID AND FROM THERE WILL REBUILD THE ENTIRE WIDGET WITH THE CURRENT MAP ID
+      setState(() {
+      currentMapId = id;
+      });
+    };
+    super.initState();
+  }
+
+
+
+
   @override
   Widget build(BuildContext context) {
-    return BonfireWidget(
-        player:DonQuijotePlayer(position: Vector2(1900,1550),
-            spriteSheet: DonQuijoteSpriteSheet.spriteSheet),
-        // showCollisionArea: true,
-        joystick: Joystick(
-          directional: JoystickDirectional(),
-        ),
-        map: WorldMapByTiled(
-          Globals.mapOne,// MAP DIRECTION
-          forceTileSize: Vector2(32, 32),
-          objectsBuilder: { // WE MAP THE NPC TROUGH THIS OBJECT BUILDER
-            'ugly_girl': (properties) =>
-                UglyGirlNpc(position: properties.position,
-                    spriteSheet: UglyGirlSpriteSheet.spriteSheet)
-          }
-      ),
-    );
+    switch(currentMapId){ // MAPPING ID ROUTING
+      case MapId.one:
+
+      case MapId.two:
+      case MapId.three:
+
+      default:
+        return BonfireWidget(
+          key: Key(DateTime.now().toIso8601String()), // THIS KEY NEEDS TO BE IN EVERY BONEFIREWIDGET
+          overlayBuilderMap: { // MINI MAP
+            PuzzleEasy.id: (context, game) => const PuzzleEasy(),
+            'mini_map':(context, game) => MiniMap(
+                game: game,
+                margin: const EdgeInsets.all(20),
+                borderRadius: BorderRadius.circular(10),
+                border: Border.all(color: Colors.white.withOpacity(0)))
+          },
+          initialActiveOverlays:const <String>['mini_map'],
+
+
+          player:DonQuijotePlayer(position: Vector2(1900,1550),
+              spriteSheet: DonQuijoteSpriteSheet.spriteSheet),
+          // showCollisionArea: true,
+          joystick: Joystick(
+            directional: JoystickDirectional(),
+          ),
+          map: WorldMapByTiled(
+              Globals.mapOne,// MAP DIRECTION
+              forceTileSize: Vector2(32, 32),
+              objectsBuilder: { // WE MAP THE NPC TROUGH THIS OBJECT BUILDER
+                'ugly_girl': (properties) =>
+                    UglyGirlNpc(position: properties.position,
+                        spriteSheet: UglyGirlSpriteSheet.spriteSheet)
+              }
+          ),
+        );
+    }
   }
 }

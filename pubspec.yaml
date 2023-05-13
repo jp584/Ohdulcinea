@@ -20,6 +20,7 @@ dependencies:
 
 
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -37,6 +38,7 @@ flutter:
     - assets/audio/effects/
     - assets/images/
     - assets/images/sprite_sheets/
+    - assets/images/items/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see
