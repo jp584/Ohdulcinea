@@ -2,6 +2,7 @@ import 'package:bonfire/bonfire.dart';
 import 'package:flame_audio/flame_audio.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:ohdulcinea/miniGames/puzzlefacil.dart';
 import '../constants/globals.dart';
 import '../controller/dulcineaController.dart';
 import '../miniGames/puzzle_easy.dart';
@@ -76,7 +77,7 @@ class PuzzleUno extends GameDecoration with Sensor<DonQuijotePlayer>, ObjectColl
   void _showDialog(){
     showDialog(context: context, builder: (_){
       if (!quijoCtrl.rompeUno.value) {
-        return const PuzzleEasy();
+        return const puzzleEasy();
       } else {
         return AlertDialog(
               content: Text('Ya ganaste este juego'),
