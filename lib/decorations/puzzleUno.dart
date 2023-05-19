@@ -74,7 +74,6 @@ class PuzzleUno extends GameDecoration with Sensor<DonQuijotePlayer>, ObjectColl
 
   // MINI GAME LOAD METHOD
   void _showDialog(){
-
     showDialog(context: context, builder: (_){
       if (!quijoCtrl.rompeUno.value) {
         return const PuzzleEasy();
