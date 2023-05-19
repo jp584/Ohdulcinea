@@ -153,7 +153,7 @@ class _HomeState extends State<Home> {
                 color: correctAnswerSelected ? Colors.green : Colors.red,
                 child: Center(
                   child: Text(
-                    correctAnswerSelected ? 'Correct!' : 'Incorrect :/',
+                    correctAnswerSelected ? 'Correcto!' : 'Incorrecto...',
                     style: TextStyle(
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,
@@ -170,8 +170,8 @@ class _HomeState extends State<Home> {
                 child: Center(
                   child: Text(
                     _totalScore > 4
-                        ? 'Congratulations! Your final score is: $_totalScore'
-                        : 'Your final score is: $_totalScore. Better luck next time!',
+                        ? 'Felicidades! Tu puntuacion final es: $_totalScore'
+                        : 'Tu puntuacion final es: $_totalScore. Mejor suerte la próxima!',
                     style: TextStyle(
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,
