@@ -5,32 +5,32 @@ import 'package:get/get.dart';
 import '../constants/globals.dart';
 import '../controller/dulcineaController.dart';
 import '../miniGames/puzzle_easy.dart';
+import '../miniGames/whack_easy.dart';
 import '../players/don_quijote.dart';
 import '../sprite_sheets/wack_sprite_sheet.dart';
 
-
 // OBJECTS INHERIT OF GAME DECORATION WITH PLAYER
-class WackUno extends GameDecoration with Sensor<DonQuijotePlayer>, ObjectCollision, TapGesture{
-
+class WackUno extends GameDecoration
+    with Sensor<DonQuijotePlayer>, ObjectCollision, TapGesture {
   final QuijoteController quijoCtrl = Get.find<QuijoteController>();
 
   bool _isClosed = false;
 
-  Sprite? chestClosed,chestOpen;
+  Sprite? chestClosed, chestOpen;
 
-  WackUno({required Vector2 position}) : // CONSTRUCTURE (SPRITE; POSITION; SIZE)
+  WackUno({required Vector2 position})
+      : // CONSTRUCTURE (SPRITE; POSITION; SIZE)
         super.withSprite(
-        //sprite: Sprite.load(Globals.puzzleChestSpriteSheet), // SPRITE OF THE OBJECT
-          sprite: WackUnoSpriteSheet.chestClosed , // SPRITE OF THE OBJECT
-          position: position, // POSITION OF THE ITEM
-          size: Vector2.all(Globals.smallItemSize,) // ITEM SIZE
-      ){
+            //sprite: Sprite.load(Globals.puzzleChestSpriteSheet), // SPRITE OF THE OBJECT
+            sprite: WackUnoSpriteSheet.chestClosed, // SPRITE OF THE OBJECT
+            position: position, // POSITION OF THE ITEM
+            size: Vector2.all(
+              Globals.smallItemSize,
+            ) // ITEM SIZE
+            ) {
     setupCollision(
-      CollisionConfig(collisions: [
-        CollisionArea.rectangle(size: Vector2(10,10)
-        )
-      ]
-      ),
+      CollisionConfig(
+          collisions: [CollisionArea.rectangle(size: Vector2(10, 10))]),
     );
   }
 
@@ -40,23 +40,22 @@ class WackUno extends GameDecoration with Sensor<DonQuijotePlayer>, ObjectCollis
     seeComponentType<DonQuijotePlayer>(
         observed: (player) {
           // IF THE GAME WASN'T COMPLETED YET
-          if( !_isClosed){
+          if (!_isClosed) {
             _isClosed = true;
             //_showDialog();
           }
         },
-        notObserved: (){
+        notObserved: () {
           _isClosed = false;
         },
-        radiusVision: Globals.defaultTileSize * 2
-    );
+        radiusVision: Globals.defaultTileSize * 2);
     super.update(dt);
   }
 
   // CHANGE SPRITE WHEN THE CHEST IS NEAR QUIJOTE
   @override
   void render(Canvas canvas) {
-    if(_isClosed){
+    if (_isClosed) {
       sprite = chestOpen;
     } else {
       sprite = chestClosed;
@@ -73,23 +72,24 @@ class WackUno extends GameDecoration with Sensor<DonQuijotePlayer>, ObjectCollis
   }
 
   // MINI GAME LOAD METHOD
-  void _showDialog(){
-
-    showDialog(context: context, builder: (_){
-      if (!quijoCtrl.rompeUno.value) {
-        return const PuzzleEasy();
-      } else {
-        return AlertDialog(
-            content: Text('Ya ganaste este juego'),
-            actions: [
-              TextButton(
-                  onPressed: () {Navigator.pop(context);},
-                  child: Text('Ok')
-              ),
-            ]
-        );
-      }
-    });
+  void _showDialog() {
+    showDialog(
+        context: context,
+        builder: (_) {
+          if (!quijoCtrl.rompeUno.value) {
+            return const WhackAMoleGameEasy();
+          } else {
+            return AlertDialog(
+                content: Text('Ya ganaste este juego'),
+                actions: [
+                  TextButton(
+                      onPressed: () {
+                        Navigator.pop(context);
+                      },
+                      child: Text('Ok')),
+                ]);
+          }
+        });
   }
 
   @override
@@ -99,14 +99,10 @@ class WackUno extends GameDecoration with Sensor<DonQuijotePlayer>, ObjectCollis
     }
   }
 
-
-
   @override
   void onContact(GameComponent component) {
     // TODO: implement onContact
   }
-
-
 
 // WHAT WILL HAPPEN WHEN THE PLAYER CONTACT THE CHEST
 // @override
@@ -127,5 +123,4 @@ class WackUno extends GameDecoration with Sensor<DonQuijotePlayer>, ObjectCollis
 //           builder: (context) => const PuzzleEasy()));
 //   // gameRef.overlayManager.add(PuzzleEasy.id);
 // }
-
 }
