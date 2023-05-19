@@ -98,7 +98,13 @@ class _WhackAMoleGameState extends State<WhackAMoleGameEasy> {
       appBar: AppBar(
         title: const Text("Whack-a-Mole"),
         backgroundColor: Colors.brown,
-      ),
+            leading: IconButton(
+            icon: Icon(Icons.arrow_back),
+            onPressed: () {
+            Navigator.pop(context);
+            },
+            )
+    ),
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
