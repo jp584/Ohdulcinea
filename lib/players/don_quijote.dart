@@ -3,7 +3,6 @@ import 'package:bonfire/bonfire.dart';
 import 'package:ohdulcinea/constants/animation_configs.dart';
 import 'package:ohdulcinea/constants/globals.dart';
 
-import '../decorations/puzzleUno.dart';
 
 class DonQuijotePlayer extends SimplePlayer with ObjectCollision {
 
@@ -23,7 +22,8 @@ class DonQuijotePlayer extends SimplePlayer with ObjectCollision {
         size: Vector2(24, 24),
           ),
         ],
-    ));
+    )
+    );
   
   }
 }

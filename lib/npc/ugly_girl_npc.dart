@@ -34,19 +34,20 @@ class UglyGirlNpc extends SimpleNpc with TapGesture {
         _speak(text: '¿Pero como es eso posible? ¡YO SOLO AMO A DULCINEA!', isHero: true),
         _speak(text: 'La última vez que vi a esa mujer, estaba dentro del castillo.\nPero la puerta esta cerrada.', isHero: false),
         _speak(text: '¡Como es eso posible!, debo encontar la Llave.', isHero: true),
-        _speak(text: 'Segúro debe estar por aquí afuera.', isHero: true),
+        _speak(text: 'Trata de ver que hay en los cofres, eso puedo ayudar', isHero: false),
+        _speak(text: 'Se encuentran cerca a las hogueras', isHero: false),
       ],
         logicalKeyboardKeysToNext: [
           LogicalKeyboardKey.space,
           LogicalKeyboardKey.enter
         ],
         onClose: () {
-          gameRef.add(PuzzleUno( position: Vector2(1900,1450)));
           gameRef.camera.moveToPlayerAnimated(zoom:1);
         }
       );
     });
   }
+
   // DIALOGBOX BETWEEN UGLY GIRL AND QUIJOTE
   // CREATE SPEACH COMPONENT BETWEEN THE DIALOG (TEXT -> WHAT IS BEING SAYD; ISHERO -> IF THE PERSON TALKING IS THE HERO OR THE NPC)
   Say _speak({required String text, required bool isHero}) => Say(
@@ -56,8 +57,8 @@ class UglyGirlNpc extends SimpleNpc with TapGesture {
     person: SizedBox(
       height: Globals.dialogBox,
       width: Globals.dialogBox,
-      child: isHero ? DonQuijoteSpriteSheet.spriteSheet.getSprite(0, 0).asWidget() :
-      UglyGirlSpriteSheet.spriteSheet.getSprite(0, 0).asWidget(),
+      child: isHero ? DonQuijoteDialogImage.spriteSheet.getSprite(0,0).asWidget() :
+      UglyGirlDialogImage.spriteSheet.getSprite(0, 0).asWidget(),
     ),
     personSayDirection: isHero ? PersonSayDirection.LEFT : PersonSayDirection.RIGHT
   );

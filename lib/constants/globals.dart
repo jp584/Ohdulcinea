@@ -16,6 +16,9 @@ class Globals {
   static const String explosionSound = 'effects/explosion.wav';
   static const String fireSound = 'effects/fire.wav';
 
+  // MUSIC
+  static const List<String> music = ['background/1t.wav', 'background/2t.wav', 'background/3t.wav'];
+
   /// Sizes
   static const double itemSize = 50.0;
   static const double smallItemSize = 25.0;
@@ -28,6 +31,15 @@ class Globals {
   static const String uglyGirlSpriteSheet = 'sprite_sheets/ugly_girl.png';
   static const String blueNinjaSpriteSheet = 'sprite_sheets/blue_ninja.png';
   static const String darkNinjaSpriteSheet = 'sprite_sheets/dark_ninja.png';
+
+  // OBJECTS
+  static const String puzzleChestSpriteSheet = 'sprite_sheets/puzzle_chest.png';
+  static const String wackChestSpriteSheet = 'sprite_sheets/wack_chest.png';
+  static const String quizChistSpriteSheet = 'sprite_sheets/quizz_chest.png';
+
+  // DIALOGS PICTURES
+  static const String donQuijoteDialogImg = 'dialogs/donQuijote.png';
+  static const String uglyGirlDialogImg = 'dialogs/uglyGirl.png';
 
   static const String demonCyclopIdlSpriteSheet =
       'sprite_sheets/demon_cyclop_idle.png';

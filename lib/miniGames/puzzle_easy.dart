@@ -1,5 +1,9 @@
+import 'package:bonfire/bonfire.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
+import '../controller/dulcineaController.dart';
 import '../enums/map_id.dart';
 import '../games/dulcinea_game.dart';
 
@@ -97,22 +101,23 @@ class PuzzleEasy extends StatelessWidget {
                           fontSize: 20, backgroundColor: Colors.pink))))
               ),
               Align(
-                  alignment: Alignment(1, 1),
+                  alignment: const Alignment(1, 1),
                   child: Container(
                       width: 100,
                       height: 100,
                       color: Colors.amber,
-                      child: Center(child: Text('Nueve', style: TextStyle(
+                      child: const Center(child: Text('Nueve', style: TextStyle(
                           fontSize: 20, backgroundColor: Colors.orange))))
               ),
-              SizedBox(height: 100,),
+              const SizedBox(height: 100,),
               ElevatedButton( // HOW TO RETURN TO FIRST MAP
-                  onPressed: () => selectMap(MapId.one),
-                  child: Text('Volver al mapa')
+                  onPressed: () => Navigator.pop(context),
+                  child: const Text('Volver al mapa')
               )
             ]
         ),
       ),
     );
   }
+
 }
